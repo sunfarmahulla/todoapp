@@ -6,14 +6,14 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'client/build')))
+app.use(express.static("client/build"));
 app.use(bodyParser.urlencoded({ extended: true }));
 var jwt = require('jsonwebtoken');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 app.use(logger('dev'));
 
-//require('./models/db.js');
+require('./models/db.js');
 
 process.env.SECRET_KEY = 'secret'
 const API = require('./routes/api');
@@ -42,4 +42,4 @@ app.listen(port, () => {
     console.log('port is listeninf in', port);
 })
 
-module.exports =app;
+//module.exports =app;
